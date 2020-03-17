@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <!--=============== basic  ===============-->
+            <meta charset="UTF-8">
+            <title>Reservation - {% block title %}{% endblock %}</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+            <meta name="robots" content="index, follow"/>
+            <meta name="keywords" content=""/>
+            <meta name="description" content=""/>
+            <!--=============== css  ===============-->
+            <link type="text/css" rel="stylesheet" href="/css/reset.css">
+            <link type="text/css" rel="stylesheet" href="/css/plugins.css">
+            <link type="text/css" rel="stylesheet" href="/css/style.css">
+            <link type="text/css" rel="stylesheet" href="/css/color.css">
+            {% block stylesheets %}{% endblock %}
+            <!--=============== favicons ===============-->
+            <link rel="shortcut icon" href="/images/favicon.ico">
+            </head>
+    <body>
+
+       
+    
+      {% include 'partials/header.html.twig' %}
+      
+     
+        {% block body %}{% endblock %}
+
+      {% include 'partials/footer.html.twig' %}
+
+      
+      <script type="text/javascript" src="/js/jquery.min.js"></script>
+      <script type="text/javascript" src="/js/plugins.js"></script>
+      <script type="text/javascript" src="/js/scripts.js"></script>
+      AIzaSyCCayDwFDQ5E7CZSRlKI6468fDO56mXWy8
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqYZfhwiaqecSJpG8rQhbLye28wBHKn20"></script>
+      <script type="text/javascript" src="/js/map_infobox.js"></script>
+      <script type="text/javascript" src="/js/markerclusterer.js"></script>  
+      <script type="text/javascript" src="/js/maps.js"></script>
+      {% block javascripts %}{% endblock %}
+    </body>
+</html>
