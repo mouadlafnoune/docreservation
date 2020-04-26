@@ -35,7 +35,7 @@ class Ad
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $coverImage;
 
@@ -99,9 +99,55 @@ class Ad
      */
     private $ville;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $adresse;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $telephone;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $email;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $facebook;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $instagram;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $twitter;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $whatsapp;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $instatoken;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Expertise", mappedBy="ad")
+     */
+    private $expertises;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
+        $this->expertises = new ArrayCollection();
     }
 
    /**
@@ -122,6 +168,10 @@ class Ad
         }
     }
 
+    public function __toString()
+   {
+           return $this->getName();
+   }
     public function getId(): ?int
     {
         return $this->id;
@@ -314,6 +364,133 @@ class Ad
     public function setVille(?Ville $ville): self
     {
         $this->ville = $ville;
+
+        return $this;
+    }
+
+    public function getAdresse(): ?string
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(string $adresse): self
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    public function getTelephone(): ?string
+    {
+        return $this->telephone;
+    }
+
+    public function setTelephone(string $telephone): self
+    {
+        $this->telephone = $telephone;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getFacebook(): ?string
+    {
+        return $this->facebook;
+    }
+
+    public function setFacebook(?string $facebook): self
+    {
+        $this->facebook = $facebook;
+
+        return $this;
+    }
+
+    public function getInstagram(): ?string
+    {
+        return $this->instagram;
+    }
+
+    public function setInstagram(?string $instagram): self
+    {
+        $this->instagram = $instagram;
+
+        return $this;
+    }
+
+    public function getTwitter(): ?string
+    {
+        return $this->twitter;
+    }
+
+    public function setTwitter(?string $twitter): self
+    {
+        $this->twitter = $twitter;
+
+        return $this;
+    }
+
+    public function getWhatsapp(): ?string
+    {
+        return $this->whatsapp;
+    }
+
+    public function setWhatsapp(?string $whatsapp): self
+    {
+        $this->whatsapp = $whatsapp;
+
+        return $this;
+    }
+
+    public function getInstatoken(): ?string
+    {
+        return $this->instatoken;
+    }
+
+    public function setInstatoken(?string $instatoken): self
+    {
+        $this->instatoken = $instatoken;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Expertise[]
+     */
+    public function getExpertises(): Collection
+    {
+        return $this->expertises;
+    }
+
+    public function addExpertise(Expertise $expertise): self
+    {
+        if (!$this->expertises->contains($expertise)) {
+            $this->expertises[] = $expertise;
+            $expertise->setAd($this);
+        }
+
+        return $this;
+    }
+
+    public function removeExpertise(Expertise $expertise): self
+    {
+        if ($this->expertises->contains($expertise)) {
+            $this->expertises->removeElement($expertise);
+            // set the owning side to null (unless already changed)
+            if ($expertise->getAd() === $this) {
+                $expertise->setAd(null);
+            }
+        }
 
         return $this;
     }

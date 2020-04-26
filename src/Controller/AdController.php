@@ -50,6 +50,12 @@ public function createad(Request $request, EntityManagerInterface  $manager){
    
 
     if($form->isSubmitted() && $form->isValid()){
+        foreach($ad->getExpertises() as $expertise){
+            $expertise->setAd($ad);
+            $manager->persist($expertise);
+        }
+        $ad->setAuthor($this->getUser());
+
         $manager->persist($ad);
         $manager->flush();
 
@@ -63,7 +69,7 @@ public function createad(Request $request, EntityManagerInterface  $manager){
             'slug' => $ad->getSlug()
         ]);
     }
-
+   
     return $this->render('dashboard/newad.html.twig',[
         'form' => $form->createView()
     ]);
@@ -78,6 +84,11 @@ public function editad(Ad $ad, Request $request, EntityManagerInterface  $manage
     $form->handleRequest($request);
 
     if($form->isSubmitted() && $form->isValid()){
+        foreach($ad->getExpertises() as $expertise){
+            $expertise->setAd($ad);
+            $manager->persist($expertise);
+        }
+      
         $manager->persist($ad);
         $manager->flush();
 

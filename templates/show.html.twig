@@ -19,53 +19,7 @@
              </div>
         {% endfor %}
         <!-- end flash -->
-        <!--  carousel--> 
-        <div class="list-single-carousel-wrap fl-wrap" id="sec1">
-            <div class="fw-carousel fl-wrap full-height lightgallery">
-                <!-- slick-slide-item -->
-                <div class="slick-slide-item">
-                    <div class="box-item">
-                        <img  src="images/all/single/1.jpg"   alt="">
-                        <a href="images/all/single/1.jpg" class="gal-link popup-image"><i class="fa fa-search"  ></i></a>
-                    </div>
-                </div>
-                <!-- slick-slide-item end -->
-                <!-- slick-slide-item -->
-                <div class="slick-slide-item">
-                    <div class="box-item">
-                        <img  src="images/all/single/1.jpg"   alt="">
-                        <a href="images/all/single/1.jpg" class="gal-link popup-image"><i class="fa fa-search"  ></i></a>
-                    </div>
-                </div>
-                <!-- slick-slide-item end -->
-                <!-- slick-slide-item -->
-                <div class="slick-slide-item">
-                    <div class="box-item">
-                        <img  src="images/all/single/1.jpg"   alt="">
-                        <a href="images/all/single/1.jpg" class="gal-link popup-image"><i class="fa fa-search"  ></i></a>
-                    </div>
-                </div>
-                <!-- slick-slide-item end -->
-                <!-- slick-slide-item -->
-                <div class="slick-slide-item">
-                    <div class="box-item">
-                        <img  src="images/all/single/1.jpg"   alt="">
-                        <a href="images/all/single/1.jpg" class="gal-link popup-image"><i class="fa fa-search"  ></i></a>
-                    </div>
-                </div>
-                <!-- slick-slide-item end -->
-                <!-- slick-slide-item -->
-                <div class="slick-slide-item">
-                    <div class="box-item">
-                        <img  src="images/all/single/1.jpg"   alt="">
-                        <a href="images/all/single/1.jpg" class="gal-link popup-image"><i class="fa fa-search"  ></i></a>
-                    </div>
-                </div>
-                <!-- slick-slide-item end -->
-            </div>
-            <div class="swiper-button-prev sw-btn"><i class="fa fa-long-arrow-left"></i></div>
-            <div class="swiper-button-next sw-btn"><i class="fa fa-long-arrow-right"></i></div>
-        </div>
+        <!--  carousel-->
         <!--  carousel  end--> 
         <div class="scroll-nav-wrapper fl-wrap">
             <div class="container">
@@ -96,7 +50,7 @@
                                             <div class="col-md-8">
                                                 <div class="list-single-header-item-opt fl-wrap">
                                                     <div class="list-single-header-cat fl-wrap">
-                                                        <a href="#">Hotels</a>
+                                                        <a href="#">{{ad.category.title}}</a>
                                                     </div>
                                                 </div>
                                                 <h2>{{ad.name}} <span> - Hosted By </span><a href="author-single.html">Alisa Noory</a> </h2>
@@ -108,12 +62,11 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="fl-wrap list-single-header-column">
-                                                    <span class="viewed-counter"><i class="fa fa-eye"></i> Viewed -  156 </span>
-                                                    <a class="custom-scroll-link" href="#sec5"><i class="fa fa-hand-o-right"></i>Add Review </a>
-                                                    <div class="share-holder hid-share">
-                                                        <div class="showshare"><span>Share </span><i class="fa fa-share"></i></div>
-                                                        <div class="share-container  isShare"></div>
-                                                    </div>
+                                                        {% if (ad.filename) > 0 %}
+                                                        <img src="/images/properties/{{ad.filename}}" class="img-thumbnail">
+                                                        {% else %}
+                                                        <img src="/images/all/single/1.jpg" class="img-thumbnail">
+                                                        {% endif %}
                                                 </div>
                                             </div>
                                         </div>
@@ -121,61 +74,19 @@
                                 </div>
                             </div>
                             <!-- list-single-header end -->
-                            <div class="list-single-facts fl-wrap gradient-bg">
-                                <!-- inline-facts -->
-                                <div class="inline-facts-wrap">
-                                    <div class="inline-facts">
-                                        <i class="fa fa-home"></i>
-                                        <div class="milestone-counter">
-                                            <div class="stats animaper">
-                                                <div class="num" data-content="0" data-num="45">0</div>
-                                            </div>
-                                        </div>
-                                        <h6>Hotel Rooms</h6>
-                                    </div>
-                                </div>
-                                <!-- inline-facts end -->
-                                <!-- inline-facts  -->
-                                <div class="inline-facts-wrap">
-                                    <div class="inline-facts">
-                                        <i class="fa fa-male"></i>
-                                        <div class="milestone-counter">
-                                            <div class="stats animaper">
-                                                <div class="num" data-content="0" data-num="2557">0</div>
-                                            </div>
-                                        </div>
-                                        <h6>Happy customers every year</h6>
-                                    </div>
-                                </div>
-                                <!-- inline-facts end -->
-                                <!-- inline-facts  -->
-                                <div class="inline-facts-wrap">
-                                    <div class="inline-facts">
-                                        <i class="fa fa-cutlery"></i>
-                                        <div class="milestone-counter">
-                                            <div class="stats animaper">
-                                                <div class="num" data-content="0" data-num="5">0</div>
-                                            </div>
-                                        </div>
-                                        <h6>Restorans Inside</h6>
-                                    </div>
-                                </div>
-                                <!-- inline-facts end -->                            
-                            </div>
+                           
                             <div class="list-single-main-item fl-wrap">
                                 <div class="list-single-main-item-title fl-wrap">
-                                    <h3>About Hotel </h3>
+                                    <h3>Présentation du professionnel de santé </h3>
                                 </div>
-                                <p>Ut euismod ultricies sollicitudin. Curabitur sed dapibus nulla. Nulla eget iaculis lectus. Mauris ac maximus neque. Nam in mauris quis libero sodales eleifend. Morbi varius, nulla sit amet rutrum elementum, est elit finibus tellus, ut tristique elit risus at metus.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, et pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra.</p>
-                                <a href="#" class="btn transparent-btn float-btn">Visit Website <i class="fa fa-angle-right"></i></a>
+                                <p>{{ad.description}}</p>
                                 <span class="fw-separator"></span>
                                 <div class="list-single-main-item-title fl-wrap">
-                                    <h3>Amenities</h3>
+                                    <h3>Informations pratiques</h3>
                                 </div>
                                 <div class="listing-features fl-wrap">
                                     <ul>
-                                        <li><i class="fa fa-rocket"></i> Elevator in building</li>
+                                        <li><i class="fa fa-angle-double-up"></i> Elevator in building</li>
                                         <li><i class="fa fa-wifi"></i> Free Wi Fi</li>
                                         <li><i class="fa fa-motorcycle"></i> Free Parking</li>
                                         <li><i class="fa fa-cloud"></i> Air Conditioned</li>
@@ -187,41 +98,31 @@
                                 </div>
                                 <span class="fw-separator"></span>
                                 <div class="list-single-main-item-title fl-wrap">
-                                    <h3>Tags</h3>
+                                    <h3>Expertises, actes et symptômes</h3>
                                 </div>
                                 <div class="list-single-tags tags-stylwrap">
-                                    <a href="#">Hotel</a>
-                                    <a href="#">Hostel</a>
-                                    <a href="#">Room</a>
-                                    <a href="#">Spa</a>
-                                    <a href="#">Restourant</a>
-                                    <a href="#">Parking</a>                                                                               
+                                    {% for expertise in ad.expertises %}
+                                    <a href="#">{{ expertise.name }}</a>
+                                        {% endfor %}                                  
                                 </div>
                             </div>
                             <!-- list-single-main-item-->   
-                            <div class="list-single-main-item fl-wrap" id="sec3">
-                                <div class="list-single-main-item-title fl-wrap">
-                                    <h3>Promo Video</h3>
-                                </div>
-                                <div class="iframe-holder fl-wrap">
-                                    <div class="resp-video">
-                                        <iframe src="https://player.vimeo.com/video/161566855" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                                    </div>
-                                </div>
-                            </div>
+                           
                             <!-- list-single-main-item end -->                            
                             <div class="accordion">
-                                <a class="toggle act-accordion" href="#"> Details option   <i class="fa fa-angle-down"></i></a>
+                                <a class="toggle act-accordion" href="#"> Tarifs et remboursements   <i class="fa fa-angle-down"></i></a>
                                 <div class="accordion-inner visible">
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, et pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra.</p>
                                 </div>
-                                <a class="toggle" href="#"> Details option 2  <i class="fa fa-angle-down"></i></a>
+                                <a class="toggle" href="#"> Moyens de paiement  <i class="fa fa-angle-down"></i></a>
                                 <div class="accordion-inner">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, et pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra.</p>
+                                    <p> <b>Chèques, espèces et cartes bancaires</b> </p>
                                 </div>
-                                <a class="toggle" href="#"> Details option 3  <i class="fa fa-angle-down"></i></a>
+                                <a class="toggle" href="#"> Formations  <i class="fa fa-angle-down"></i></a>
                                 <div class="accordion-inner">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, et pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra.</p>
+                                    <p><b>2004</b></p>
+                                    <p>
+                                            Diplôme d'État de docteur en médecine - Groupe Hospitalier Universitaire Saint-Louis - Lariboisière - Fernand Widal</p>
                                 </div>
                             </div>
                             <!-- list-single-main-item -->   
@@ -324,31 +225,10 @@
                     <div class="col-md-4">
                         <div class="box-widget-wrap">
                             <!--box-widget-item -->
-                            <div class="box-widget-item fl-wrap">
-                                <div class="box-widget-item-header">
-                                    <h3>Working Hours : </h3>
-                                </div>
-                                <div class="box-widget opening-hours">
-                                    <div class="box-widget-content">
-                                        <span class="current-status"><i class="fa fa-clock-o"></i> Now Open</span>
-                                        <ul>
-                                            <li><span class="opening-hours-day">Monday </span><span class="opening-hours-time">9 AM - 5 PM</span></li>
-                                            <li><span class="opening-hours-day">Tuesday </span><span class="opening-hours-time">9 AM - 5 PM</span></li>
-                                            <li><span class="opening-hours-day">Wednesday </span><span class="opening-hours-time">9 AM - 5 PM</span></li>
-                                            <li><span class="opening-hours-day">Thursday </span><span class="opening-hours-time">9 AM - 5 PM</span></li>
-                                            <li><span class="opening-hours-day">Friday </span><span class="opening-hours-time">9 AM - 5 PM</span></li>
-                                            <li><span class="opening-hours-day">Saturday </span><span class="opening-hours-time">9 AM - 3 PM</span></li>
-                                            <li><span class="opening-hours-day">Sunday </span><span class="opening-hours-time">Closed</span></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                            
                             <!--box-widget-item end -->  
                             <!--box-widget-item -->
                             <div class="box-widget-item fl-wrap">
-                                <div class="box-widget-item-header">
-                                    <h3>Book a Reservation: </h3>
-                                </div>
                                 <div class="box-widget opening-hours">
                                     <div class="box-widget-content">
                                         <form   class="add-comment custom-form">
@@ -358,14 +238,7 @@
                                                 <div class="clearfix"></div>
                                                 <label><i class="fa fa-envelope-o"></i>  </label>
                                                 <input type="text" placeholder="Email Address*" value=""/>
-                                                <div class="quantity fl-wrap">
-                                                    <span><i class="fa fa-user-plus"></i>Persons : </span>
-                                                    <div class="quantity-item">
-                                                        <input type="button" value="-" class="minus">
-                                                        <input type="text"    name="quantity"   title="Qty" class="qty" min="1" max="3" step="1" value="1">
-                                                        <input type="button" value="+" class="plus">
-                                                    </div>
-                                                </div>
+                                                
                                                 <div class="row">
                                                     <div class="col-md-6">                               
                                                         <label><i class="fa fa-calendar-check-o"></i>  </label>
@@ -378,19 +251,14 @@
                                                 </div>
                                                 <textarea cols="40" rows="3" placeholder="Additional Information:"></textarea>
                                             </fieldset>
-                                            <button class="btn  big-btn  color-bg flat-btn">Book Now<i class="fa fa-angle-right"></i></button>
+                                            <button class="btn  big-btn  color-bg flat-btn">Réserver<i class="fa fa-angle-right"></i></button>
                                         </form>
                                     </div>
                                 </div>
                             </div>
                             <!--box-widget-item end -->   
                             <!--box-widget-item -->
-                            <div class="box-widget-item fl-wrap">
-                                <div class="box-widget-item-header">
-                                    <h3>Weather in City : </h3>
-                                </div>										
-                                <div id="weather-widget" class="gradient-bg ideaboxWeather" data-city="New York"></div>
-                            </div>
+                            
                             <!--box-widget-item end --> 									
                             <!--box-widget-item -->
                             <div class="box-widget-item fl-wrap">
@@ -398,24 +266,23 @@
                                     <h3>Location / Contacts : </h3>
                                 </div>
                                 <div class="box-widget">
-                                    <div class="map-container">
-                                        <div id="singleMap" data-latitude="40.7427837" data-longitude="-73.11445617675781" data-mapTitle="Our Location"></div>
-                                    </div>
+                                        <div class="map-container">
+                                          <div id="singleMap" data-latitude="{{ ad.lat }}" data-longitude="{{ ad.longi }}"></div>
+                                        </div>
                                     <div class="box-widget-content">
                                         <div class="list-author-widget-contacts list-item-widget-contacts">
                                             <ul>
-                                                <li><span><i class="fa fa-map-marker"></i> Adress :</span> <a href="#">USA 27TH Brooklyn NY</a></li>
-                                                <li><span><i class="fa fa-phone"></i> Phone :</span> <a href="#">+7(123)987654</a></li>
-                                                <li><span><i class="fa fa-envelope-o"></i> Mail :</span> <a href="#">AlisaNoory@domain.com</a></li>
-                                                <li><span><i class="fa fa-globe"></i> Website :</span> <a href="#">themeforest.net</a></li>
+                                                <li><span><i class="fa fa-map-marker"></i> Adress :</span> <a href="#">{{ad.adresse}}</a></li>
+                                                <li><span><i class="fa fa-phone"></i> Phone :</span> <a href="#">{{ad.telephone}}</a></li>
+                                                <li><span><i class="fa fa-envelope-o"></i> Mail :</span> <a href="#">{{ad.email}}</a></li>
                                             </ul>
                                         </div>
                                         <div class="list-widget-social">
                                             <ul>
-                                                <li><a href="#" target="_blank" ><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="#" target="_blank" ><i class="fa fa-vk"></i></a></li>
-                                                <li><a href="#" target="_blank" ><i class="fa fa-whatsapp"></i></a></li>
+                                                <li><a href="{{ad.facebook}}" target="_blank" ><i class="fa fa-facebook"></i></a></li>
+                                                <li><a href="{{ad.twitter}}" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                                <li><a href="{{ad.instagram}}" target="_blank" ><i class="fa fa-instagram"></i></a></li>
+                                                <li><a href="{{ad.whatsapp}}" target="_blank" ><i class="fa fa-whatsapp"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -429,71 +296,17 @@
                                 </div>
                                 <div class="box-widget">
                                     <div class="box-widget-content">
-                                         <div class='jr-insta-thumb' id="insta-content" data-instatoken="3075034521.5d9aa6a.284ff8339f694dbfac8f265bf3e93c8a"></div>
-                                        <a class="widget-posts-link" href="#" target="_blank">Follow Us<span><i class="fa fa-angle-right"></i></span></a>
+                                         <div class='jr-insta-thumb' id="insta-content" data-instatoken="{{ad.instatoken}}"></div>
+                                        <a class="widget-posts-link" href="{{ad.instagram}}" target="_blank">Follow Us<span><i class="fa fa-angle-right"></i></span></a>
                                     </div>
                                 </div>
                             </div>
                             <!--box-widget-item end -->										
                             <!--box-widget-item -->
-                            <div class="box-widget-item fl-wrap">
-                                <div class="box-widget-item-header">
-                                    <h3>Hosted by : </h3>
-                                </div>
-                                <div class="box-widget list-author-widget">
-                                    <div class="list-author-widget-header shapes-bg-small  color-bg fl-wrap">
-                                        <span class="list-author-widget-link"><a href="author-single.html">Alisa Noory</a></span>
-                                        <img src="images/avatar/1.jpg" alt=""> 
-                                    </div>
-                                    <div class="box-widget-content">
-                                        <div class="list-author-widget-text">
-                                            <div class="list-author-widget-contacts">
-                                                <ul>
-                                                    <li><span><i class="fa fa-phone"></i> Phone :</span> <a href="#">+7(123)987654</a></li>
-                                                    <li><span><i class="fa fa-envelope-o"></i> Mail :</span> <a href="#">AlisaNoory@domain.com</a></li>
-                                                    <li><span><i class="fa fa-globe"></i> Website :</span> <a href="#">themeforest.net</a></li>
-                                                </ul>
-                                            </div>
-                                            <a href="author-single.html" class="btn transparent-btn">View Profile <i class="fa fa-eye"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
                             <!--box-widget-item end -->
                             <!--box-widget-item -->
-                            <div class="box-widget-item fl-wrap">
-                                <div class="box-widget-item-header">
-                                    <h3>More from this employer : </h3>
-                                </div>
-                                <div class="box-widget widget-posts">
-                                    <div class="box-widget-content">
-                                        <ul>
-                                            <li class="clearfix">
-                                                <a href="#"  class="widget-posts-img"><img src="images/all/1.jpg"  alt=""></a>
-                                                <div class="widget-posts-descr">
-                                                    <a href="#" title="">Cafe "Lollipop"</a>
-                                                    <span class="widget-posts-date"><i class="fa fa-calendar-check-o"></i> 21 Mar 2017 </span> 
-                                                </div>
-                                            </li>
-                                            <li class="clearfix">
-                                                <a href="#"  class="widget-posts-img"><img src="images/all/1.jpg"  alt=""></a>
-                                                <div class="widget-posts-descr">
-                                                    <a href="#" title=""> Apartment in the Center</a>
-                                                    <span class="widget-posts-date"><i class="fa fa-calendar-check-o"></i> 7 Mar 2017 </span> 
-                                                </div>
-                                            </li>
-                                            <li class="clearfix">
-                                                <a href="#"  class="widget-posts-img"><img src="images/all/1.jpg"  alt=""></a>
-                                                <div class="widget-posts-descr">
-                                                    <a href="#" title="">Event in City Mol</a>
-                                                    <span class="widget-posts-date"><i class="fa fa-calendar-check-o"></i> 7 Mar 2017 </span>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <a class="widget-posts-link" href="#">See All Listing<span><i class="fa fa-angle-right"></i></span></a>   
-                                    </div>
-                                </div>
-                            </div>
+                     
                             <!--box-widget-item end -->     
                         </div>
                     </div>

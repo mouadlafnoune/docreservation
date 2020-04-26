@@ -33,9 +33,15 @@ class Category
      */
     private $ads;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="category")
+     */
+    private $users;
+
     public function __construct()
     {
         $this->ads = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function __toString()
@@ -97,6 +103,37 @@ class Category
             // set the owning side to null (unless already changed)
             if ($ad->getCategory() === $this) {
                 $ad->setCategory(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->setCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->contains($user)) {
+            $this->users->removeElement($user);
+            // set the owning side to null (unless already changed)
+            if ($user->getCategory() === $this) {
+                $user->setCategory(null);
             }
         }
 

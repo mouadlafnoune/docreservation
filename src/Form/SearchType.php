@@ -28,14 +28,14 @@ class SearchType extends AbstractType
                 'label' => false,
                 'required' => false,
                 'class' => Category::class,
-                'placeholder' => 'Choisir une catégorie',
+                'placeholder' => 'Choisir une spécialité',
                 'attr' => ['class' => 'chosen-select']
              ])
              ->add('ville', EntityType::class,[
                 'label' => false,
                 'required' => false,
                 'class' => Ville::class,
-                'placeholder' => 'Choisir une cille',
+                'placeholder' => 'Choisir une ville',
                 'attr' => ['class' => 'chosen-select']
              ]);
     }

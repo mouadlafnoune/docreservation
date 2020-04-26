@@ -66,6 +66,14 @@ class User implements UserInterface
      */
     private $ads;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="users")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $category;
+
+    
+
     public function __construct()
     {
         $this->ads = new ArrayCollection();
@@ -242,6 +250,18 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
     }
 
 }

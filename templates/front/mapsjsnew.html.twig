@@ -12,26 +12,26 @@
                     return ('<div class="map-popup-wrap"><div class="map-popup"><div class="infoBox-close"><i class="fa fa-times"></i></div><div class="map-popup-category">' + locationCategory + '</div><a href="' + locationURL + '" class="listing-img-content fl-wrap"><img src="' + locationImg + '" alt=""></a> <div class="listing-content fl-wrap"><div class="card-popup-raining map-card-rainting" data-staRrating="' + locationStarRating + '"><span class="map-popup-reviews-count">( ' + locationRevievsCounter + '  J\'aime )</span></div><div class="listing-title fl-wrap"><h4><a href=' + locationURL + '>' + locationTitle + '</a></h4><span class="map-popup-location-info"><i class="fa fa-map-marker"></i>' + locationAddress + '</span><span class="map-popup-location-phone"><i class="fa fa-phone"></i>' + locationPhone + '</span></div></div></div></div>')
                 }
                 var locations = [
-                    {% for listing in ads %}
+                    
                     [locationData(
-                        "{{path('ads_show', {'slug': listing.slug}) }}",
-                        '{{ listing.name|capitalize }}',
-                        '/images/properties/{{listing.filename}}',
-                        '{{ listing.name|capitalize }}',
-                        "44, Rue des hôpitaux",
-                        '063456789',
+                        'cghhgchg',
+                        'lcjkd',
+                        'AZERTYUI',
+                        'leckjln',
+                        "ZERTYUIOP",
+                        '123456789',
                         "5",
-                        "4,8"),
-                        "{{ listing.lat }}",
-                        "{{ listing.longi }}",
+                        "hjjhbhjb"),
+                        "1234",
+                        "1234",
                         0,
                         markerIcon
                     ],
-                    {% endfor %}
+                    
                     ];
 
                 var map = new google.maps.Map(document.getElementById('map-main'), {
-                    zoom: 7,
+                    zoom: 9,
                     scrollwheel: false,
                     center: new google.maps.LatLng(33.589886, -7.603869),
                     mapTypeId: google.maps.MapTypeId.ROADMAP,

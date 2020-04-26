@@ -373,6 +373,7 @@ blockquote p {
 	top:34px;
 	font-size:13px;
 	font-weight:600;
+	margin-left: 37px;
 }
 .dark-header .show-reg-form {
 	color:#fff;
@@ -1456,7 +1457,13 @@ section.gray-section .section-separator {
 }
 .card-listing .geodir-category-content {
 	z-index:2;
-	height: 275px;
+	height: 200px;
+}
+button.btn.btn-danger.cr {
+    margin-top: 6px;
+}
+i.fa.fa-map-marker.cr {
+    top: 14px;
 }
 .card-listing .geodir-category-content h3 {
 	float:left;
@@ -3832,6 +3839,7 @@ article .list-single-main-item {
 .change-photo-btn {
 	float:left;
 	margin-top:20px;
+	margin-left: 15px;
 }
 .photoUpload input.upload {
     position: absolute;
