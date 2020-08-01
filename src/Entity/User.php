@@ -7,10 +7,14 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @ORM\HasLifecycleCallbacks
+ * @Vich\Uploadable()
  */
 class User implements UserInterface
 {
@@ -42,7 +46,7 @@ class User implements UserInterface
     private $picture;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $hash;
 
@@ -72,13 +76,31 @@ class User implements UserInterface
      */
     private $category;
 
-    
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $filename;
+
+    /**
+     * @var File
+     * @Vich\UploadableField(mapping="property_image", fileNameProperty="filename")
+     * 
+     */
+    private $imageFile;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $updated_at;
 
     public function __construct()
     {
         $this->ads = new ArrayCollection();
     }
-
+    public function __toString()
+    {
+            return $this->getDescription();
+    }
 
     /**
      * Permet d'initialiser le slug!
@@ -260,6 +282,46 @@ class User implements UserInterface
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageFile(?File $imageFile = null): self
+    {
+        $this->imageFile = $imageFile;
+
+        if ($this->imageFile instanceof UploadedFile) {
+            $this->updated_at = new \DateTime('now');
+        }
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updated_at;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updated_at): self
+    {
+        $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    public function getFilename(): ?string
+    {
+        return $this->filename;
+    }
+
+    public function setFilename(?string $filename): self
+    {
+        $this->filename = $filename;
 
         return $this;
     }

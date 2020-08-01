@@ -120,6 +120,22 @@ public function editad(Ad $ad, Request $request, EntityManagerInterface  $manage
         ]);
     }
 
+     /**
+     * permet de supprimer un user
+     * @Route("/{slug}/deleteads", name="delete_ads_register")
+     */
+    public function deleteads(Ad $ads, EntityManagerInterface $manager)
+    {
+        
+        
+        $manager->remove($ads);
+        $manager->flush();
+        $this->addFlash(
+            'success',
+            "le compte a bien été supprimé !"
+        );
+        return $this->redirectToRoute('admin_ad_index');
+    }
 
 }
 

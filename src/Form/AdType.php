@@ -72,9 +72,9 @@ class AdType extends AbstractType
             ])
             ->add('expertises',CollectionType::class,
             [
-            'entry_type' => ExpertiseType::class,
-            'allow_add' => true,
-            'allow_delete' => true,
+                'entry_type' => ExpertiseType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
             ])
         ;
     }

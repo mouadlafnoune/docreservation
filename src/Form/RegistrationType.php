@@ -8,6 +8,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -30,12 +31,16 @@ class RegistrationType extends AbstractType
             ->add('email',TextType::class , $this->getconfiguration('Email','entrer votre email'))
             ->add('hash',PasswordType::class , $this->getconfiguration('Mot de passe','entrer votre password'))
             ->add('introduction',TextType::class , $this->getconfiguration('Code postal cabinet','entrer votre Code postal cabinet'))
-            ->add('description',NumberType::class , $this->getconfiguration('Numéro de téléphone','entrer votre Numéro de téléphone'))            
+            ->add('description',TextType::class , $this->getconfiguration('Numéro de téléphone','entrer votre Numéro de téléphone'))            
             ->add('category', EntityType::class,[
                 'class' => Category::class,
                 'choice_label' => 'title',
                 'label' => 'Spécialité',
                 'attr' => ['class' => 'chosen-select']
+            ])
+            ->add('imageFile',FileType::class, [
+                'label' => false,
+                'attr' => ['class' => 'upload']
             ])
         ;
     }

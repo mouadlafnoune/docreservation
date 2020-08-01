@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <!--=============== basic  ===============-->
+            <meta charset="UTF-8">
+            <title>Reservation - {% block title %}{% endblock %}</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+            <meta name="robots" content="index, follow"/>
+            <meta name="keywords" content=""/>
+            <meta name="description" content=""/>
+            <!--=============== css  ===============-->
+            <link type="text/css" rel="stylesheet" href="/css/reset.css">
+            <link href="/dist/css/style.css" rel="stylesheet">
+            <!-- This page CSS -->
+            <link href="/dist/css/pages/data-table.css" rel="stylesheet">
+            {% block stylesheets %}{% endblock %}
+            <!--=============== favicons ===============-->
+            <link rel="shortcut icon" href="/images/favicon.ico">
+            </head>
+    <body>
+
+       
+    
+      {% include 'partials/header_admin.html.twig' %}
+      
+     
+        {% block body %}{% endblock %}
+
+     {#{% include 'partials/footer.html.twig' %}#}
+
+      
+     
+     <script src="/assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="/dist/js/materialize.min.js"></script>
+    <script src="/assets/libs/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js"></script>
+    <!-- ============================================================== -->
+    <!-- Apps -->
+    <!-- ============================================================== -->
+    <script src="/dist/js/app.js"></script>
+    <script src="/dist/js/app.init.js"></script>
+    <script src="/dist/js/app-style-switcher.js"></script>
+    <!-- ============================================================== -->
+    <!-- Custom js -->
+    <!-- ============================================================== -->
+    <script src="/dist/js/custom.min.js"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugin js -->
+    <!-- ============================================================== -->
+    <script src="/assets/extra-libs/DataTables/datatables.min.js"></script>
+    <!-- start - This is for export functionality only -->
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
+    
+    <script>
+    //=============================================//
+    //    File export                              //
+    //=============================================//
+    $('#file_export').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    });
+    </script>
+      {% block javascripts %}{% endblock %}
+    </body>
+</html>

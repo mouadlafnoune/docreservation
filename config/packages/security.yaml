@@ -14,6 +14,23 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+
+        admin:
+            pattern: ^/admin
+            anonymous: lazy
+           
+
+            provider: in_database
+
+            form_login:
+                login_path: admin_login
+                check_path: admin_login
+                default_target_path: admin_user_index
+
+            logout:
+                path: admin_logout
+                target: admin_login
+
         main:
             anonymous: lazy
 
