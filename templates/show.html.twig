@@ -1,327 +1,483 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AdController!{% endblock %}
+{% block title %}Hello AdController!
+{% endblock %}
 
 {% block body %}
 
 
-<div id="wrapper">
-    <!--  content--> 
-    <div class="content">
-        <!-- Flash -->
-        {% for label, messages in app.flashes %}
-             <div class="container">
-                 <div class="alert alert-{{ label }}">
-                     {% for message in messages %}
-                          <p> {{message | raw}} </p>
-                     {% endfor %}
-                 </div>
-             </div>
-        {% endfor %}
-        <!-- end flash -->
-        <!--  carousel-->
-        <!--  carousel  end--> 
-        <div class="scroll-nav-wrapper fl-wrap">
-            <div class="container">
-                <nav class="scroll-nav scroll-init">
-                    <ul>
-                        <li><a class="act-scrlink" href="#sec1">Gallery</a></li>
-                        <li><a href="#sec2">Details</a></li>
-                        <li><a href="#sec3">Video </a></li>
-                        <li><a href="#sec4">Reviews</a></li>
-                    </ul>
-                </nav>
-                <a href="#" class="save-btn"> <i class="fa fa-heart"></i> Save </a>
-            </div>
-        </div>
-        <!--  section   --> 
-        <section class="gray-section no-top-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8">
-                        <!-- list-single-main-wrapper -->
-                        <div class="list-single-main-wrapper fl-wrap" id="sec2">
-                            <div class="breadcrumbs gradient-bg  fl-wrap"><a href="#">Home</a><a href="#">Listings</a><span>Listing Single</span></div>
-                            <!-- list-single-header -->
-                            <div class="list-single-header list-single-header-inside fl-wrap">
-                                <div class="container">
-                                    <div class="list-single-header-item">
-                                        <div class="row">
-                                            <div class="col-md-8">
-                                                <div class="list-single-header-item-opt fl-wrap">
-                                                    <div class="list-single-header-cat fl-wrap">
-                                                        <a href="#">{{ad.category.title}}</a>
-                                                    </div>
-                                                </div>
-                                                <h2>{{ad.name}} <span> - Hosted By </span><a href="author-single.html">Alisa Noory</a> </h2>
-                                                <span class="section-separator"></span>
-                                                <div class="listing-rating card-popup-rainingvis" data-starrating2="5">
-                                                    <span>(11 reviews)</span>
-                                                </div>
-                                                <div class="list-post-counter single-list-post-counter"><span>4</span><i class="fa fa-heart"></i></div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="fl-wrap list-single-header-column">
-                                                        {% if (ad.filename) > 0 %}
-                                                        <img src="/images/properties/{{ad.filename}}" class="img-thumbnail">
-                                                        {% else %}
-                                                        <img src="/images/all/single/1.jpg" class="img-thumbnail">
-                                                        {% endif %}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- list-single-header end -->
-                           
-                            <div class="list-single-main-item fl-wrap">
-                                <div class="list-single-main-item-title fl-wrap">
-                                    <h3>Présentation du professionnel de santé </h3>
-                                </div>
-                                <p>{{ad.description}}</p>
-                                <span class="fw-separator"></span>
-                                
-                                <div class="list-single-main-item-title fl-wrap">
-                                    <h3>Expertises, actes et symptômes</h3>
-                                </div>
-                                <div class="list-single-tags tags-stylwrap">
-                                    {% for expertise in ad.expertises %}
-                                    <a href="#">{{ expertise.name }}</a>
-                                        {% endfor %}                                  
-                                </div>
-                            </div>
-                            <!-- list-single-main-item-->   
-                           
-                            <!-- list-single-main-item end -->                            
-                            <div class="accordion">
-                                <a class="toggle act-accordion" href="#"> Tarifs et remboursements   <i class="fa fa-angle-down"></i></a>
-                                <div class="accordion-inner visible">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, et pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra.</p>
-                                </div>
-                                <a class="toggle" href="#"> Moyens de paiement  <i class="fa fa-angle-down"></i></a>
-                                <div class="accordion-inner">
-                                    <p> <b>Chèques, espèces et cartes bancaires</b> </p>
-                                </div>
-                                <a class="toggle" href="#"> Formations  <i class="fa fa-angle-down"></i></a>
-                                <div class="accordion-inner">
-                                    <p><b>2004</b></p>
-                                    <p>
-                                            Diplôme d'État de docteur en médecine - Groupe Hospitalier Universitaire Saint-Louis - Lariboisière - Fernand Widal</p>
-                                </div>
-                            </div>
-                            <!-- list-single-main-item -->   
-                            <div class="list-single-main-item fl-wrap" id="sec4">
-                                <div class="list-single-main-item-title fl-wrap">
-                                    <h3>Item Revies -  <span> 3 </span></h3>
-                                </div>
-                                <div class="reviews-comments-wrap">
-                                    <!-- reviews-comments-item -->  
-                                    <div class="reviews-comments-item">
-                                        <div class="review-comments-avatar">
-                                            <img src="images/avatar/1.jpg" alt=""> 
-                                        </div>
-                                        <div class="reviews-comments-item-text">
-                                            <h4><a href="#">Jessie Manrty</a></h4>
-                                            <div class="listing-rating card-popup-rainingvis" data-starrating2="5"> </div>
-                                            <div class="clearfix"></div>
-                                            <p>" Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris. "</p>
-                                            <span class="reviews-comments-item-date"><i class="fa fa-calendar-check-o"></i>27 May 2018</span>
-                                        </div>
-                                    </div>
-                                    <!--reviews-comments-item end-->  
-                                    <!-- reviews-comments-item -->  
-                                    <div class="reviews-comments-item">
-                                        <div class="review-comments-avatar">
-                                            <img src="images/avatar/1.jpg" alt=""> 
-                                        </div>
-                                        <div class="reviews-comments-item-text">
-                                            <h4><a href="#">Mark Rose</a></h4>
-                                            <div class="listing-rating card-popup-rainingvis" data-starrating2="4"> </div>
-                                            <div class="clearfix"></div>
-                                            <p>" Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. "</p>
-                                            <span class="reviews-comments-item-date"><i class="fa fa-calendar-check-o"></i>12 April 2018</span>
-                                        </div>
-                                    </div>
-                                    <!--reviews-comments-item end--> 
-                                    <!-- reviews-comments-item -->  
-                                    <div class="reviews-comments-item">
-                                        <div class="review-comments-avatar">
-                                            <img src="images/avatar/1.jpg" alt=""> 
-                                        </div>
-                                        <div class="reviews-comments-item-text">
-                                            <h4><a href="#">Adam Koncy</a></h4>
-                                            <div class="listing-rating card-popup-rainingvis" data-starrating2="5"> </div>
-                                            <div class="clearfix"></div>
-                                            <p>" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc posuere convallis purus non cursus. Cras metus neque, gravida sodales massa ut. "</p>
-                                            <span class="reviews-comments-item-date"><i class="fa fa-calendar-check-o"></i>03 December 2017</span>
-                                        </div>
-                                    </div>
-                                    <!--reviews-comments-item end-->                                                                  
-                                </div>
-                            </div>
-                            <!-- list-single-main-item end -->   
-                            <!-- list-single-main-item -->   
-                            <div class="list-single-main-item fl-wrap" id="sec5">
-                                <div class="list-single-main-item-title fl-wrap">
-                                    <h3>Add Revies  & Rate iteam</h3>
-                                </div>
-                                <!-- Add Review Box -->
-                                <div id="add-review" class="add-review-box">
-                                    <div class="leave-rating-wrap">
-                                        <span class="leave-rating-title">Your rating  for this listing : </span>
-                                        <div class="leave-rating">
-                                            <input type="radio" name="rating" id="rating-1" value="1"/>
-                                            <label for="rating-1" class="fa fa-star-o"></label>
-                                            <input type="radio" name="rating" id="rating-2" value="2"/>
-                                            <label for="rating-2" class="fa fa-star-o"></label>
-                                            <input type="radio" name="rating" id="rating-3" value="3"/>
-                                            <label for="rating-3" class="fa fa-star-o"></label>
-                                            <input type="radio" name="rating" id="rating-4" value="4"/>
-                                            <label for="rating-4" class="fa fa-star-o"></label>
-                                            <input type="radio" name="rating" id="rating-5" value="5"/>
-                                            <label for="rating-5" class="fa fa-star-o"></label>
-                                        </div>
-                                    </div>
-                                    <!-- Review Comment -->
-                                    <form   class="add-comment custom-form">
-                                        <fieldset>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label><i class="fa fa-user-o"></i></label>
-                                                    <input type="text" placeholder="Your Name *" value=""/>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label><i class="fa fa-envelope-o"></i>  </label>
-                                                    <input type="text" placeholder="Email Address*" value=""/>
-                                                </div>
-                                            </div>
-                                            <textarea cols="40" rows="3" placeholder="Your Review:"></textarea>
-                                        </fieldset>
-                                        <button class="btn  big-btn  color-bg flat-btn">Submit Review <i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
-                                    </form>
-                                </div>
-                                <!-- Add Review Box / End -->
-                            </div>
-                            <!-- list-single-main-item end -->                            
-                        </div>
-                    </div>
-                    <!--box-widget-wrap -->
-                    <div class="col-md-4">
-                        <div class="box-widget-wrap">
-                            <!--box-widget-item -->
-                            
-                            <!--box-widget-item end -->  
-                            <!--box-widget-item -->
-                            <div class="box-widget-item fl-wrap">
-                                <div class="box-widget opening-hours">
-                                    <div class="box-widget-content">
-                                        <form   class="add-comment custom-form">
-                                            <fieldset>
-                                                <label><i class="fa fa-user-o"></i></label>
-                                                <input type="text" placeholder="Your Name *" value=""/>
-                                                <div class="clearfix"></div>
-                                                <label><i class="fa fa-envelope-o"></i>  </label>
-                                                <input type="text" placeholder="Email Address*" value=""/>
-                                                
-                                                <div class="row">
-                                                    <div class="col-md-6">                               
-                                                        <label><i class="fa fa-calendar-check-o"></i>  </label>
-                                                        <input type="text" placeholder="Date" class="datepicker"   data-large-mode="true" data-large-default="true" value=""/>
-                                                    </div>
-                                                    <div class="col-md-6"> 
-                                                        <label><i class="fa fa-clock-o"></i>  </label>
-                                                        <input type="text" placeholder="Time" class="timepicker" value="12:00 am"/>
-                                                    </div>
-                                                </div>
-                                                <textarea cols="40" rows="3" placeholder="Additional Information:"></textarea>
-                                            </fieldset>
-                                            <button class="btn  big-btn  color-bg flat-btn">Réserver<i class="fa fa-angle-right"></i></button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--box-widget-item end -->   
-                            <!--box-widget-item -->
-                            
-                            <!--box-widget-item end --> 									
-                            <!--box-widget-item -->
-                            <div class="box-widget-item fl-wrap">
-                                <div class="box-widget-item-header">
-                                    <h3>Location / Contacts : </h3>
-                                </div>
-                                <div class="box-widget">
-                                        <div class="map-container">
-                                          <div id="singleMap" data-latitude="{{ ad.lat }}" data-longitude="{{ ad.longi }}"></div>
-                                        </div>
-                                    <div class="box-widget-content">
-                                        <div class="list-author-widget-contacts list-item-widget-contacts">
-                                            <ul>
-                                                <li><span><i class="fa fa-map-marker"></i> Adress :</span> <a href="#">{{ad.adresse}}</a></li>
-                                                <li><span><i class="fa fa-phone"></i> Phone :</span> <a href="#">{{ad.telephone}}</a></li>
-                                                <li><span><i class="fa fa-envelope-o"></i> Mail :</span> <a href="#">{{ad.email}}</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="list-widget-social">
-                                            <ul>
-                                                <li><a href="{{ad.facebook}}" target="_blank" ><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="{{ad.twitter}}" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="{{ad.instagram}}" target="_blank" ><i class="fa fa-instagram"></i></a></li>
-                                                <li><a href="{{ad.whatsapp}}" target="_blank" ><i class="fa fa-whatsapp"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--box-widget-item end -->
-                            <!--box-widget-item -->
-                            <div class="box-widget-item fl-wrap">
-                                <div class="box-widget-item-header">
-                                    <h3>Our Instagram : </h3>
-                                </div>
-                                <div class="box-widget">
-                                    <div class="box-widget-content">
-                                         <div class='jr-insta-thumb' id="insta-content" data-instatoken="{{ad.instatoken}}"></div>
-                                        <a class="widget-posts-link" href="{{ad.instagram}}" target="_blank">Follow Us<span><i class="fa fa-angle-right"></i></span></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--box-widget-item end -->										
-                            <!--box-widget-item -->
-                            
-                            <!--box-widget-item end -->
-                            <!--box-widget-item -->
-                     
-                            <!--box-widget-item end -->     
-                        </div>
-                    </div>
-                    <!--box-widget-wrap end -->
-                </div>
-            </div>
-        </section>
-        <!--  section  end--> 
-        <div class="limit-box fl-wrap"></div>
-        <!--  section   --> 
-        <section class="gradient-bg">
-            <div class="cirle-bg">
-                <div class="bg" data-bg="images/bg/circle.png"></div>
-            </div>
-            <div class="container">
-                <div class="join-wrap fl-wrap">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <h3>Join our online community</h3>
-                            <p>Grow your marketing and be happy with your online business</p>
-                        </div>
-                        <div class="col-md-4"><a href="#" class="join-wrap-btn modal-open">Sign Up <i class="fa fa-sign-in"></i></a></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--  section  end--> 
-    </div>
-    <!--  content  end--> 
-</div>
+	<div
+		id="wrapper">
+		<!--  content-->
+		<div
+			class="content">
+			<!-- Flash -->
+			{% for label, messages in app.flashes %}
+				<div class="container">
+					<div class="alert alert-{{ label }}">
+						{% for message in messages %}
+							<p>
+								{{message | raw}}
+							</p>
+						{% endfor %}
+					</div>
+				</div>
+			{% endfor %}
+			<!-- end flash -->
+			<!--  carousel-->
+			<!--  carousel  end-->
+				<div class="scroll-nav-wrapper fl-wrap"> <div class="container">
+					<nav class="scroll-nav scroll-init">
+						<ul>
+							<li><a class="act-scrlink" href="#sec1">Gallery</a></li>
+							<li><a href="#sec2">Details</a></li>
+							<li><a href="#sec3">Video</a></li>
+							<li><a href="#sec4">Reviews</a></li>
+						</ul>
+					</nav>
+					<a href="#" class="save-btn">
+						<i class="fa fa-heart"></i>
+						Save
+					</a>
+				</div>
+			</div>
+			<!--  section   -->
+			<section class="gray-section no-top-padding">
+				<div class="container">
+					<div class="row">
+						<div
+							class="col-md-8">
+							<!-- list-single-main-wrapper -->
+							<div class="list-single-main-wrapper fl-wrap" id="sec2">
+								<div class="breadcrumbs gradient-bg  fl-wrap">
+									<a href="#">Home</a>
+									<a href="#">Listings</a>
+									<span>Listing Single</span>
+								</div>
+								<!-- list-single-header -->
+								<div class="list-single-header list-single-header-inside fl-wrap">
+									<div class="container">
+										<div class="list-single-header-item">
+											<div class="row">
+												<div class="col-md-8">
+													<div class="list-single-header-item-opt fl-wrap">
+														<div class="list-single-header-cat fl-wrap">
+															<a href="#">{{ad.category.title}}</a>
+														</div>
+													</div>
+													<h2>{{ad.name}}
+														<span>
+															- Hosted By
+														</span>
+														<a href="author-single.html">Alisa Noory</a>
+													</h2>
+													<span class="section-separator"></span>
+													<div class="listing-rating card-popup-rainingvis" data-starrating2="5">
+														<span>(11 reviews)</span>
+													</div>
+													<div class="list-post-counter single-list-post-counter">
+														<span>4</span>
+														<i class="fa fa-heart"></i>
+													</div>
+												</div>
+												<div class="col-md-4">
+													<div class="fl-wrap list-single-header-column">
+														{% if (ad.filename) > 0 %}
+															<img src="/images/properties/{{ad.filename}}" class="img-thumbnail">
+														{% else %}
+															<img src="/images/all/single/1.jpg" class="img-thumbnail">
+														{% endif %}
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- list-single-header end -->
+
+								<div class="list-single-main-item fl-wrap">
+									<div class="list-single-main-item-title fl-wrap">
+										<h3>Présentation du professionnel de santé
+										</h3>
+									</div>
+									<p>{{ad.description}}</p>
+									<span class="fw-separator"></span>
+
+									<div class="list-single-main-item-title fl-wrap">
+										<h3>Expertises, actes et symptômes</h3>
+									</div>
+									<div class="list-single-tags tags-stylwrap">
+										{% for expertise in ad.expertises %}
+											<a href="#">{{ expertise.name }}</a>
+										{% endfor %}
+									</div>
+								</div>
+								<!-- list-single-main-item-->
+
+								<!-- list-single-main-item end -->
+								<div class="accordion">
+									<a class="toggle act-accordion" href="#">
+										Tarifs et remboursements
+										<i class="fa fa-angle-down"></i>
+									</a>
+									<div class="accordion-inner visible">
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, et pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra.</p>
+									</div>
+									<a class="toggle" href="#">
+										Moyens de paiement
+										<i class="fa fa-angle-down"></i>
+									</a>
+									<div class="accordion-inner">
+										<p>
+											<b>Chèques, espèces et cartes bancaires</b>
+										</p>
+									</div>
+									<a class="toggle" href="#">
+										Formations
+										<i class="fa fa-angle-down"></i>
+									</a>
+									<div class="accordion-inner">
+										<p>
+											<b>2004</b>
+										</p>
+										<p>
+											Diplôme d'État de docteur en médecine - Groupe Hospitalier Universitaire Saint-Louis - Lariboisière - Fernand Widal</p>
+									</div>
+								</div>
+								<!-- list-single-main-item -->
+								<div class="list-single-main-item fl-wrap" id="sec4">
+									<div class="list-single-main-item-title fl-wrap">
+										<h3>Item Revies -
+											<span>
+												3
+											</span>
+										</h3>
+									</div>
+									<div
+										class="reviews-comments-wrap">
+										<!-- reviews-comments-item -->
+										<div class="reviews-comments-item">
+											<div class="review-comments-avatar">
+												<img src="images/avatar/1.jpg" alt="">
+											</div>
+											<div class="reviews-comments-item-text">
+												<h4>
+													<a href="#">Jessie Manrty</a>
+												</h4>
+												<div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>
+												<div class="clearfix"></div>
+												<p>" Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris. "</p>
+												<span class="reviews-comments-item-date">
+													<i class="fa fa-calendar-check-o"></i>27 May 2018</span>
+											</div>
+										</div>
+										<!--reviews-comments-item end-->
+										<!-- reviews-comments-item -->
+										<div class="reviews-comments-item">
+											<div class="review-comments-avatar">
+												<img src="images/avatar/1.jpg" alt="">
+											</div>
+											<div class="reviews-comments-item-text">
+												<h4>
+													<a href="#">Mark Rose</a>
+												</h4>
+												<div class="listing-rating card-popup-rainingvis" data-starrating2="4"></div>
+												<div class="clearfix"></div>
+												<p>" Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. "</p>
+												<span class="reviews-comments-item-date">
+													<i class="fa fa-calendar-check-o"></i>12 April 2018</span>
+											</div>
+										</div>
+										<!--reviews-comments-item end-->
+										<!-- reviews-comments-item -->
+										<div class="reviews-comments-item">
+											<div class="review-comments-avatar">
+												<img src="images/avatar/1.jpg" alt="">
+											</div>
+											<div class="reviews-comments-item-text">
+												<h4>
+													<a href="#">Adam Koncy</a>
+												</h4>
+												<div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>
+												<div class="clearfix"></div>
+												<p>" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc posuere convallis purus non cursus. Cras metus neque, gravida sodales massa ut. "</p>
+												<span class="reviews-comments-item-date">
+													<i class="fa fa-calendar-check-o"></i>03 December 2017</span>
+											</div>
+										</div>
+										<!--reviews-comments-item end-->
+									</div>
+								</div>
+								<!-- list-single-main-item end -->
+								<!-- list-single-main-item -->
+								<div class="list-single-main-item fl-wrap" id="sec5">
+									<div class="list-single-main-item-title fl-wrap">
+										<h3>Add Revies  & Rate iteam</h3>
+									</div>
+									<!-- Add Review Box -->
+									<div id="add-review" class="add-review-box">
+										<div class="leave-rating-wrap">
+											<span class="leave-rating-title">Your rating  for this listing :
+											</span>
+											<div class="leave-rating">
+												<input type="radio" name="rating" id="rating-1" value="1"/>
+												<label for="rating-1" class="fa fa-star-o"></label>
+												<input type="radio" name="rating" id="rating-2" value="2"/>
+												<label for="rating-2" class="fa fa-star-o"></label>
+												<input type="radio" name="rating" id="rating-3" value="3"/>
+												<label for="rating-3" class="fa fa-star-o"></label>
+												<input type="radio" name="rating" id="rating-4" value="4"/>
+												<label for="rating-4" class="fa fa-star-o"></label>
+												<input type="radio" name="rating" id="rating-5" value="5"/>
+												<label for="rating-5" class="fa fa-star-o"></label>
+											</div>
+										</div>
+										<!-- Review Comment -->
+										<form class="add-comment custom-form">
+											<fieldset>
+												<div class="row">
+													<div class="col-md-6">
+														<label>
+															<i class="fa fa-user-o"></i>
+														</label>
+														<input type="text" placeholder="Your Name *" value=""/>
+													</div>
+													<div class="col-md-6">
+														<label>
+															<i class="fa fa-envelope-o"></i>
+														</label>
+														<input type="text" placeholder="Email Address*" value=""/>
+													</div>
+												</div>
+												<textarea cols="40" rows="3" placeholder="Your Review:"></textarea>
+											</fieldset>
+											<button class="btn  big-btn  color-bg flat-btn">Submit Review
+												<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+											</button>
+										</form>
+									</div>
+									<!-- Add Review Box / End -->
+								</div>
+								<!-- list-single-main-item end -->
+							</div>
+						</div>
+						<!--box-widget-wrap -->
+						<div class="col-md-4">
+							<div class="box-widget-wrap">
+								<!--box-widget-item -->
+
+								<!--box-widget-item end -->
+								<!-- Serch reservation  -->
+
+								<input type="hidden" value={{ad.id}} id="adId"/> <div class="box-widget-item">
+									<div class="box-widget-item-header">
+										<h3>Reserver :
+										</h3>
+									</div>
+									<div class="box-widget">
+
+										<div class="box-widget-content" style="padding: 25px 30px 15px;">
+											<form action="{{ path('safoine-reservation', {slug: ad.slug} ) }}" class="add-comment custom-form">
+												<div class="row">
+													<div class="col-md-6">
+
+														<input name="date" id="date-input" type="date" placeholder="Date">
+													</div>
+
+													<div class="col-md-6">
+														<input name="debut" type="hidden" placeholder="Debut" id="demo"></input>
+												</div>
+												<button type="submit" class="btn big-btn color-bg flat-btn">Commencer la réservation</button>
+											</form>
+										</div>
 
 
+										<div>
+											<input class="search-reservation btn big-btn color-bg flat-btn" type="submit" value="Search"></div>
+
+									</div>
+									<div id="data-ajax2"></div>
+								</div>
+
+								<!--box-widget-item -->
+								<div class="box-widget-item fl-wrap">
+									<div class="box-widget opening-hours">
+										<div class="box-widget-content">
+											<form class="add-comment custom-form">
+												<fieldset>
+													<label>
+														<i class="fa fa-user-o"></i>
+													</label>
+													<input type="text" placeholder="Your Name *" value=""/>
+													<div class="clearfix"></div>
+													<label>
+														<i class="fa fa-envelope-o"></i>
+													</label>
+													<input type="text" placeholder="Email Address*" value=""/>
+
+													<div class="row">
+														<div class="col-md-6">
+															<label>
+																<i class="fa fa-calendar-check-o"></i>
+															</label>
+															<input type="text" placeholder="Date" class="datepicker" data-large-mode="true" data-large-default="true" value=""/>
+														</div>
+														<div class="col-md-6">
+															<label>
+																<i class="fa fa-clock-o"></i>
+															</label>
+															<input type="text" placeholder="Time" class="timepicker" value="12:00 am"/>
+														</div>
+													</div>
+													<textarea cols="40" rows="3" placeholder="Additional Information:"></textarea>
+												</fieldset>
+												<button class="btn  big-btn  color-bg flat-btn">Réserver<i class="fa fa-angle-right"></i>
+												</button>
+											</form>
+										</div>
+									</div>
+								</div>
+								<!--box-widget-item end -->
+								<!--box-widget-item -->
+
+								<!--box-widget-item end -->
+								<!--box-widget-item -->
+									<div class="box-widget-item fl-wrap"> <div class="box-widget-item-header">
+										<h3>Location / Contacts :
+										</h3>
+									</div>
+									<div class="box-widget">
+										<div class="map-container">
+											<div id="singleMap" data-latitude="{{ ad.lat }}" data-longitude="{{ ad.longi }}"></div>
+										</div>
+										<div class="box-widget-content">
+											<div class="list-author-widget-contacts list-item-widget-contacts">
+												<ul>
+													<li>
+														<span>
+															<i class="fa fa-map-marker"></i>
+															Adress :</span>
+														<a href="#">{{ad.adresse}}</a>
+													</li>
+													<li>
+														<span>
+															<i class="fa fa-phone"></i>
+															Phone :</span>
+														<a href="#">{{ad.telephone}}</a>
+													</li>
+													<li>
+														<span>
+															<i class="fa fa-envelope-o"></i>
+															Mail :</span>
+														<a href="#">{{ad.email}}</a>
+													</li>
+												</ul>
+											</div>
+											<div class="list-widget-social">
+												<ul>
+													<li><ahref="{{ad.facebook}}" target="_blank"><i class="fa fa-facebook"></i></a></li>
+													<li><ahref="{{ad.twitter}}" target="_blank"><i class="fa fa-twitter"></i></a></li>
+													<li><ahref="{{ad.instagram}}" target="_blank"><i class="fa fa-instagram"></i></a></li>
+													<li><ahref="{{ad.whatsapp}}" target="_blank"><i class="fa fa-whatsapp"></i></a></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!--box-widget-item end -->
+								<!--box-widget-item -->
+								<div class="box-widget-item fl-wrap">
+									<div class="box-widget-item-header">
+										<h3>Our Instagram :
+										</h3>
+									</div>
+									<div class="box-widget">
+										<div class="box-widget-content">
+											<div class='jr-insta-thumb' id="insta-content" data-instatoken="{{ad.instatoken}}"></div>
+											<a class="widget-posts-link" href="{{ad.instagram}}" target="_blank">Follow Us<span>
+													<i class="fa fa-angle-right"></i>
+												</span>
+											</a>
+										</div>
+									</div>
+								</div>
+								<!--box-widget-item end -->
+							<!--box-widget-item -->
+
+								<!--box-widget-item end -->
+								<!--box-widget-item -->
+
+								<!--box-widget-item end -->
+							</div>
+						</div>
+						<!--box-widget-wrap end -->
+					</div>
+				</div>
+			</section>
+			<!--  section  end-->
+			<div class="limit-box fl-wrap"></div>
+			<!--  section   -->
+			<section class="gradient-bg">
+				<div class="cirle-bg">
+					<div class="bg" data-bg="images/bg/circle.png"></div>
+				</div>
+				<div class="container">
+					<div class="join-wrap fl-wrap">
+						<div class="row">
+							<div class="col-md-8">
+								<h3>Join our online community</h3>
+								<p>Grow your marketing and be happy with your online business</p>
+							</div>
+							<div class="col-md-4">
+								<a href="#" class="join-wrap-btn modal-open">Sign Up
+									<i class="fa fa-sign-in"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--  section  end-->
+		</div>
+		<!--  content  end-->
+	</div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+
+
+		$('.search-reservation').on("click", function (e) {
+var date = $("#date-input").val();
+var id = $("#adId").val();
+
+
+// vider La liste des reservations
+$('#data-ajax2').html("");
+
+$.ajax({
+url: "{{ path('show_times_ajax') }}?id=" + id,
+
+data: {
+date: date
+},
+success: function (data) { // var myArray = JSON.parse(data);
+data.forEach(element => display(element['date']['time'], element['disponible']));
+// console.log(data);
+}
+});
+
+});
+
+function display(text, etat) { // alert(text);
+$('#data-ajax2').append('<input class="btn big-btn color-bg flat-btn" type="button"  value="' + text + '" id="myInput" class="btn btn-primary" ' + etat + '/>');
+
+$('input:button').click(function () { // alert($(this).val());
+document.getElementById("demo").value = $(this).val();
+});
+}
+	</script>
 {% endblock %}

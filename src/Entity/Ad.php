@@ -144,10 +144,22 @@ class Ad
      */
     private $expertises;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Calendar", mappedBy="ad", cascade={"persist", "remove"})
+     */
+    private $calendars;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Reservation", mappedBy="ad", cascade={"persist", "remove"})
+     */
+    private $reservations;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
         $this->expertises = new ArrayCollection();
+        $this->calendars = new ArrayCollection();
+        $this->reservations = new ArrayCollection();
     }
 
    /**
@@ -489,6 +501,68 @@ class Ad
             // set the owning side to null (unless already changed)
             if ($expertise->getAd() === $this) {
                 $expertise->setAd(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Calendar[]
+     */
+    public function getCalendars(): Collection
+    {
+        return $this->calendars;
+    }
+
+    public function addCalendar(Calendar $calendar): self
+    {
+        if (!$this->calendars->contains($calendar)) {
+            $this->calendars[] = $calendar;
+            $calendar->setAd($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCalendar(Calendar $calendar): self
+    {
+        if ($this->calendars->contains($calendar)) {
+            $this->calendars->removeElement($calendar);
+            // set the owning side to null (unless already changed)
+            if ($calendar->getAd() === $this) {
+                $calendar->setAd(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Reservation[]
+     */
+    public function getReservations(): Collection
+    {
+        return $this->reservations;
+    }
+
+    public function addReservation(Reservation $reservation): self
+    {
+        if (!$this->reservations->contains($reservation)) {
+            $this->reservations[] = $reservation;
+            $reservation->setAd($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReservation(Reservation $reservation): self
+    {
+        if ($this->reservations->contains($reservation)) {
+            $this->reservations->removeElement($reservation);
+            // set the owning side to null (unless already changed)
+            if ($reservation->getAd() === $this) {
+                $reservation->setAd(null);
             }
         }
 
