@@ -1,5 +1,10 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheet %}
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+{% endblock %}
+
 {% block title %}Hello AdController!
 {% endblock %}
 
@@ -277,7 +282,7 @@
 									<div class="box-widget">
 
 										<div class="box-widget-content" style="padding: 25px 30px 15px;">
-											<form action="{{ path('safoine-reservation', {slug: ad.slug} ) }}" class="add-comment custom-form">
+											<form {% if app.user == null %} action="{{ path('account_register_from_reservation', {slug: ad.slug} ) }}" {% endif %} action="{{ path('safoine-reservation', {slug: ad.slug} ) }}" class="add-comment custom-form">
 												<div class="row">
 													<div class="col-md-6">
 
@@ -296,6 +301,7 @@
 											<input class="search-reservation btn big-btn color-bg flat-btn" type="submit" value="Search"></div>
 
 									</div>
+
 									<div id="data-ajax2"></div>
 								</div>
 
@@ -447,6 +453,7 @@
 
 {% block javascripts %}
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 	<script>
 
 
@@ -473,7 +480,8 @@ data.forEach(element => display(element['date']['time'], element['disponible']))
 });
 
 function display(text, etat) { // alert(text);
-$('#data-ajax2').append('<input class="btn big-btn color-bg flat-btn" type="button"  value="' + text + '" id="myInput" class="btn btn-primary" ' + etat + '/>');
+$('#data-ajax2').append('<input  type="button"  value="' + text + '" id="myInput" class="btn btn-primary" ' + etat + '/>');
+
 
 $('input:button').click(function () { // alert($(this).val());
 document.getElementById("demo").value = $(this).val();

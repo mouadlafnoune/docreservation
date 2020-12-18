@@ -47,6 +47,8 @@ class CalendarController extends AbstractController
              $dateStart = $calendar->getStart();
              $dateEnd = $calendar->getEnd();
              //$userId = $calendar->getAd();
+             $nbr = $calendar->getDecalageHoraire();
+
              while($dateStart < $dateEnd)
              {
                 $calendar1 = new Calendar();
@@ -60,13 +62,15 @@ class CalendarController extends AbstractController
                 $calendar1->setAd($calendar->getAd());
                 $calendar1->setDate($calendar->getDate());
                 $calendar1->setEnd($calendar->getEnd());
-               
+                $calendar1->setDecalageHoraire($calendar->getDecalageHoraire());
+
                     $calendar1->setStart($dateStart);
 
                     $entityManager->persist($calendar1);
+
                     $entityManager->flush();
                     
-                    $calendar1->setStart($dateStart->modify('+30 minutes'));
+                    $calendar1->setStart($dateStart->modify("+$nbr minutes"));
                     
                     
             }

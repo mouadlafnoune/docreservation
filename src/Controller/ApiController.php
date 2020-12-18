@@ -184,10 +184,10 @@ $response->headers->set('Content-Type', 'application/json');
                 $debut = date_create_from_format('H:i', $debut);
                 //$endtime = date_create_from_format('H:i', $endtime);
                
-                //   if($this->getUser() == null){
-                //      $this->addFlash("warning","Vous devez s'authentifier pour avoir réserver !");
-                //      return $this->redirectToRoute('ads_show',["slug"=>$ad->getSlug()]);
-                //  }
+                   if($this->getUser() == null){
+                      $this->addFlash("warning","Vous devez s'authentifier pour avoir réserver !");
+                      return $this->redirectToRoute('account_register_from_reservation',["slug"=>$ad->getSlug()]);
+                   }
                
                  $makepro = new Reservation();
                  $user = $this->getUser();

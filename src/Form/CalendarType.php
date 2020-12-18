@@ -21,6 +21,7 @@ class CalendarType extends AbstractType
             ->add('end', DateTimeType::class,[
                 'date_widget' => 'single_text'
             ])
+            ->add('decalage_horaire')
             ->add('description')
             ->add('all_day')
             ->add('background_color', ColorType::class)

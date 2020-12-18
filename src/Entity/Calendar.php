@@ -67,6 +67,11 @@ class Calendar
      */
     private $ad;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $decalage_horaire;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -194,6 +199,18 @@ class Calendar
     public function setAd(?Ad $ad): self
     {
         $this->ad = $ad;
+
+        return $this;
+    }
+
+    public function getDecalageHoraire(): ?int
+    {
+        return $this->decalage_horaire;
+    }
+
+    public function setDecalageHoraire(int $decalage_horaire): self
+    {
+        $this->decalage_horaire = $decalage_horaire;
 
         return $this;
     }

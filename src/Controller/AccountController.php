@@ -4,10 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Ad;
 use App\Entity\User;
+use App\Entity\Reservation;
 use App\Form\RegistrationType;
 use App\Form\RegistrationProType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -65,6 +67,54 @@ public function createregister(Request $request, EntityManagerInterface $manager
     ]);
     }
 
+    /**
+ * permet d'afficher le formulaire from reservation d'inscription
+ * 
+ * @Route("/register-from-reservation/{slug}", name="account_register_from_reservation")
+ *
+ * @return Response
+ */
+public function createRegisterFromReservation(Request $request, EntityManagerInterface $manager, Ad $ad,UserPasswordEncoderInterface $encoder,AuthenticationUtils $utils)
+{
+
+    //
+    $date = $request->query->get('date');
+    $debut = $request->query->get('debut');
+
+    $date = date_create_from_format('Y-m-d', $date);
+    $debut = date_create_from_format('H:i', $debut);
+    //dd($date,$debut);
+    //
+    $user = new User();
+    $error = $utils->getLastAuthenticationError();
+    $form = $this->createForm(RegistrationType::class, $user);
+    $form->handleRequest($request);
+    if($form->isSubmitted() && $form->isValid() ){
+        $hash = $encoder->encodePassword($user, $user->getHash());
+        $user->setHash($hash);
+ 
+        $makepro = new Reservation();
+        $makepro->setUser($user);
+        $makepro->setStartFrom($debut);
+        $makepro->setDate($date);
+        $makepro->setAd($ad);
+
+        $manager->persist($user);
+        $manager->persist($makepro);
+        $manager->flush();
+
+        $this->addFlash(
+            'success',
+            "Le compte a bien été créé avec la resérvation!"
+        );
+        return $this->redirectToRoute('ads_show',["slug"=>$ad->getSlug()]);
+    }
+
+    return $this->render('dashboard/account/registration.html.twig',[
+        'form' => $form->createView(),
+        'hasError' => $error !== null
+    ]);
+    }
 
 
     /**
